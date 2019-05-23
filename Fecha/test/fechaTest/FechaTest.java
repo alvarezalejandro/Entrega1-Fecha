@@ -8,18 +8,15 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import modelo.Fecha;
-//private SimpleDateFormat formatoIso8601 = new SimpleDateFormat("yyyy-MM-dd");  
-//private SimpleDateFormat formatoLatinoamericano = new SimpleDateFormat("dd/MM/yyyy");
-//private SimpleDateFormat formatoNorteamericano = new SimpleDateFormat("MM-dd-yyyy");
 
 public class FechaTest {
 	@Test
 	public void convertirAISO8601_ConvierteStringAISO8601()throws ParseException {
 		Fecha conversor = new Fecha();
-		Date fecha = conversor.convertirAIso8601("2017-07-25");
+		Date fecha = conversor.convertirAIso8601("17-07-25");
 		Calendar fechaEsperada = Calendar.getInstance();
 		fechaEsperada.clear();
-		fechaEsperada.set(2017, 6, 25);
+		fechaEsperada.set(17, 6, 25);
 		Assert.assertEquals("La fecha en formato ISO8601 se convirtio incorrectamente", fechaEsperada.getTime(),fecha);
 	}
 	@Test(expected = ParseException.class)
@@ -85,17 +82,17 @@ public class FechaTest {
 	@Test(expected = ParseException.class)
 	public void convertirAFlexible_ConvierteStringErroneoAISO8601()throws ParseException {
 		Fecha conversor = new Fecha();
-		conversor.convertirAIso8601("2017-13-25");
+		conversor.convertirAFlexible("2017-13-25");
 	}
 	@Test(expected = ParseException.class)
 	public void convertirAFlexible_ConvierteStringErroneoALatinoamericano()throws ParseException {
 		Fecha conversor = new Fecha();
-		conversor.convertirALatinoamericano("32/11/2017");
+		conversor.convertirAFlexible("32/11/2017");
 	}
 	@Test(expected = ParseException.class)
 	public void convertirAFlexible_ConvierteStringErroneoANorteamericano()throws ParseException {
 		Fecha conversor = new Fecha();
-		conversor.convertirANorteamericano("13-25-2017");
+		conversor.convertirAFlexible("13-25-2017");
 	}
 	@Test
 	public void diasEntreFechas_Entre20DeFebrero2019Y26DeFebrero2019Pasaron6Dias()throws ParseException {

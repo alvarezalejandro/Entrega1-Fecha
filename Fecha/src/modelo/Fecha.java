@@ -43,6 +43,9 @@ public class Fecha {
     	else if(Pattern.matches(regexNorteamericano, fechaFlexible)) {
     		fecha = convertirANorteamericano(fechaFlexible);
     	}
+    	else {
+    		throw new ParseException("No se encontro un formato valido", 0);
+    	}    	
     	return fecha;
     }
     
